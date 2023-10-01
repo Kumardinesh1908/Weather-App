@@ -10,15 +10,22 @@
 </head>
 
 <body>
+    <!-- Container for the weather information -->
     <div class="weatherContainer">
+
+        <!-- Search bar for city input -->
         <div class="search">
-            <input type="text" onclick="changePadding()" placeholder="Enter City Name / Allow the location permission" spellcheck="false">
+            <input type="text" onclick="changePadding()" placeholder="Enter City Name / Allow the location permission"
+                spellcheck="false">
             <button><img src="images/search.png" alt=""></button>
         </div>
+
+        <!-- Displayed weather information -->
         <div class="weather">
             <img src="images/rain.png" class="weatherIcon" alt="">
             <h1 class="temp">30°C</h1>
             <h2 class="city">Delhi</h2>
+            <!-- Details section (humidity and wind speed) -->
             <div class="details">
                 <div class="description">
                     <img src="images/humidity.png" alt="">

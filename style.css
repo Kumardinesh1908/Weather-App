@@ -1,21 +1,25 @@
+/* Importing a Google Font for later use */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&display=swap');
 
-*{
+/* Resetting default styles and setting a common font */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins',sans-sarif;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 
-body{
+/* Styling the body of the page */
+body {
     background-color: #222;
 }
 
-.weatherContainer{
+/* Styling the weather container */
+.weatherContainer {
     width: 80vw;
-    min-width: 500px;
     max-width: 470px;
-    background: linear-gradient(135deg,#00feba, #5b548a);
+    min-width: 400px;
+    background: linear-gradient(135deg, #00feba, #5b548a);
     color: #fff;
     margin: 20px auto 0px;
     padding: 40px 35px;
@@ -23,14 +27,16 @@ body{
     text-align: center;
 }
 
-.search{
+/* Styling the search bar */
+.search {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.search input{
+/* Styling the search input */
+.search input {
     border: 0;
     outline: 0;
     background: #ebfffc;
@@ -43,39 +49,43 @@ body{
     font-size: 1.1rem;
 }
 
-.search button{
+/* Styling the search button */
+.search button {
     border: 0;
     outline: 0;
     background: #ebfffc;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
     cursor: pointer;
 }
 
-.search button img{
+/* Styling the search button image */
+.search button img {
     width: 16px;
-
 }
 
-.weatherIcon{
+/* Styling the weather icon */
+.weatherIcon {
     width: 170px;
     margin-top: 30px;
 }
 
-.weather h1{
+/* Styling the main weather title */
+.weather h1 {
     font-size: 80px;
     font-weight: 500;
 }
 
-.weather h2{
+/* Styling the weather description */
+.weather h2 {
     font-size: 45px;
     font-weight: 400;
     text-transform: capitalize;
-    /* margin-top: -10px; */
 }
 
-.details{
+/* Styling weather details */
+.details {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,18 +93,22 @@ body{
     margin-top: 50px;
 }
 
-.description{
+/* Styling weather description with an icon */
+.description {
     display: flex;
     align-items: center;
     text-align: left;
 }
 
-.description img{
+/* Styling weather description icon */
+.description img {
     width: 40px;
     margin-right: 10px;
 }
 
-.humidity,.wind{
+/* Styling humidity and wind information */
+.humidity,
+.wind {
     font-size: 28px;
     margin-top: -6px;
 }
