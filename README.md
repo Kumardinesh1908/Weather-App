@@ -1,7 +1,7 @@
 # Weather-App :partly_sunny: 
 This is a simple weather app that allows users to check the weather for a specific location or their current location. Weather data is retrieved using the OpenWeather API, which provides accurate weather information.
 
-<img src="/ToDo Image.png">
+<img src="/images/weather image.png">
 
 ## Features:fire:
 :tv: 1. Get current weather information for a specific location.<br>
