@@ -8,32 +8,8 @@ const cityElement = document.querySelector('.city');
 const humidityElement = document.querySelector('.humidity');
 const windElement = document.querySelector('.wind');
 
-// Function to display an error message
-function displayError(message) {
-  weatherIcon.src = "images/error.png";
-  tempElement.style.fontSize = "40px";
-  tempElement.textContent = message;
-  cityElement.textContent = "";
-  humidityElement.style.fontSize = "16px";
-  humidityElement.textContent = "Not available";
-  windElement.style.fontSize = "16px";
-  windElement.textContent = "Not available";
-}
-
-// Function to fetch weather data from an API based on latitude and longitude
-async function getWeatherDataByLocation(latitude, longitude) {
-  try {
-    const api = `https://api.openweathermap.org/data/2.5/weather`;
-    const apikey = "d5399166131ee702b7110a07cda5e106";
-    const url = `${api}?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=metric`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    displayError("Error fetching weather data");
-    return null;
-  }
-}
+// Get weather data based on user's location when the page loads
+window.addEventListener('load', getLocation);
 
 // Function to get the user's location coordinates
 function getLocation() {
@@ -53,8 +29,20 @@ function getLocation() {
   }
 }
 
-// Get weather data based on user's location when the page loads
-window.addEventListener('load', getLocation);
+// Function to fetch weather data from an API based on latitude and longitude
+async function getWeatherDataByLocation(latitude, longitude) {
+  try {
+    const api = `https://api.openweathermap.org/data/2.5/weather`;
+    const apikey = "d5399166131ee702b7110a07cda5e106";
+    const url = `${api}?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=metric`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    displayError("Error fetching weather data");
+    return null;
+  }
+}
 
 // Function to update the weather information on the page
 function updateWeather(weatherData) {
@@ -88,6 +76,22 @@ function updateWeather(weatherData) {
 
 }
 
+// Event listener for the search input to fetch location on Enter key press
+searchInput.addEventListener('keypress', async (e) => {
+  if (e.key === 'Enter') {
+    const city = searchInput.value;
+    const weatherData = await getWeatherDataByCity(city);
+    updateWeather(weatherData);
+  }
+});
+
+// Event listener for the search button click
+searchButton.addEventListener('click', async () => {
+  const city = searchInput.value;
+  const weatherData = await getWeatherDataByCity(city);
+  updateWeather(weatherData);
+});
+
 // Function to fetch weather data from an API based on city name
 async function getWeatherDataByCity(city) {
   try {
@@ -101,12 +105,17 @@ async function getWeatherDataByCity(city) {
   }
 }
 
-// Event listener for the search button click
-searchButton.addEventListener('click', async () => {
-  const city = searchInput.value;
-  const weatherData = await getWeatherDataByCity(city);
-  updateWeather(weatherData);
-});
+// Function to display an error message
+function displayError(message) {
+  weatherIcon.src = "images/error.png";
+  tempElement.style.fontSize = "40px";
+  tempElement.textContent = message;
+  cityElement.textContent = "";
+  humidityElement.style.fontSize = "16px";
+  humidityElement.textContent = "Not available";
+  windElement.style.fontSize = "16px";
+  windElement.textContent = "Not available";
+}
 
 // Event listener for the search Input click
 function changePadding() {
